@@ -1,0 +1,20 @@
+import qrcode
+
+# Define the URL you want to encode in the QR code
+url = "https://example.com"
+
+# Generate the QR code
+qr = qrcode.QRCode(
+    version=1,  # You can adjust the version and error correction as needed
+    error_correction=qrcode.constants.ERROR_CORRECT_L,
+    box_size=10,
+    border=4,
+)
+qr.add_data(url)
+qr.make(fit=True)
+
+# Create an Image object from the QR code data
+img = qr.make_image(fill_color="black", back_color="white")
+
+# Save the QR code as a .png file
+img.save("qr_code.png")
